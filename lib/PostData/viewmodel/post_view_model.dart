@@ -25,7 +25,7 @@ abstract class _PostViewModelBase with Store {
   }
 
   void setContext(BuildContext? context) {
-    this.viewContext = context;
+    viewContext = context;
     fetchItems();
   }
 

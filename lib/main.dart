@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:vp_app/PostData/view/post_view.dart';
 
-void main() async {
+Future<void> main() async {
   await dotenv.load(fileName: ".env");
-  // ignore: prefer_const_constructors
-  runApp(MyApp());
+  return runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -13,6 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Material App', home: PostView());
+    return MaterialApp(
+        title: 'Material App',
+        home: PostView(),
+        debugShowCheckedModeBanner: false);
   }
 }

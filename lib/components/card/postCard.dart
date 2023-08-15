@@ -13,11 +13,15 @@ class PostCards extends StatelessWidget {
         onTap: () {
           Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => Scaffold(
-              appBar: AppBar(),
+              appBar: AppBar(
+                title: const Text("text"),
+              ),
             ),
           ));
         },
-        title: Text(postModel.title ?? 'No Title'),
+        title: Text(
+          postModel.title ?? 'No Title',
+        ),
         subtitle: Text(postModel.body ?? 'No Body'),
       ),
     );

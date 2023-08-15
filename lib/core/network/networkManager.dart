@@ -14,24 +14,22 @@ class NetworkManager {
     return _instance!;
   }
 
-  final String _baseUrl = 'BASE_URL';
+  final String _baseUrl = dotenv.get('BASE_URL');
   late final Dio dio;
 
   NetworkManager._init() {
-    final url = dotenv.get(_baseUrl);
-
-    if (url != null) {
-      dio = Dio(BaseOptions(baseUrl: url));
-      if (kDebugMode) dio.interceptors.add(PrettyDioLogger());
-
-      dio.interceptors.add(InterceptorsWrapper(
-        onRequest: (options, handler) {
-          options.path += '.json';
-          handler.next(options);
-        },
-      ));
-    } else {
-      throw EnvironmentNotFoundException(_baseUrl);
+    if (_baseUrl.isEmpty) {
+      throw EnvironmentNotFoundException('BASE_URL');
     }
+
+    dio = Dio(BaseOptions(baseUrl: _baseUrl));
+    if (kDebugMode) dio.interceptors.add(PrettyDioLogger());
+
+    // dio.interceptors.add(InterceptorsWrapper(
+    //   onRequest: (options, handler) {
+    //     options.path += '.json';
+    //     handler.next(options);
+    //   },
+    // ));
   }
 }

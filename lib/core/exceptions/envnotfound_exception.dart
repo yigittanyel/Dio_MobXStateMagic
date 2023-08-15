@@ -1,5 +1,5 @@
 class EnvironmentNotFoundException implements Exception {
-  final String value;
+  final String? value;
 
   EnvironmentNotFoundException(this.value);
 

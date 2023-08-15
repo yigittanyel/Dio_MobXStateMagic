@@ -6,7 +6,7 @@ extension ServiceEndPintsExtension on _ServiceEndPoints {
   String get rawValue {
     switch (this) {
       case _ServiceEndPoints.POSTS:
-        return '/dogs';
+        return '/posts';
     }
   }
 }
